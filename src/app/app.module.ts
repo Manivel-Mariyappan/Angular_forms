@@ -10,7 +10,8 @@ import { TextboxComponent } from './textbox/textbox.component';
 import { DynamicformComponent } from './reactive-form/dynamicform/dynamicform.component';
 import { SubgroupComponent } from './reactive-form/subgroup/subgroup.component';
 import { TemplatedrivenComponent } from './templatedriven/templatedriven.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { SelectBoxComponent } from './select-box/select-box.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +21,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DynamicformComponent,
     SubgroupComponent,
     TemplatedrivenComponent,
+    SelectBoxComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
+    NgSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
