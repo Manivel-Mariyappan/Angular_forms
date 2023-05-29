@@ -10,6 +10,7 @@ import { TextboxComponent } from './textbox/textbox.component';
 import { DynamicformComponent } from './reactive-form/dynamicform/dynamicform.component';
 import { SubgroupComponent } from './reactive-form/subgroup/subgroup.component';
 import { TemplatedrivenComponent } from './templatedriven/templatedriven.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TemplatedrivenComponent } from './templatedriven/templatedriven.compone
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
