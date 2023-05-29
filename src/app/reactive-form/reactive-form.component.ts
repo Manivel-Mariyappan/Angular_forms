@@ -12,6 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
               <app-textbox label="Address" formControlName="address"></app-textbox>
               <app-textbox label="Phone" formControlName="phone"></app-textbox>
               <app-select-box label="car" [options]="cars" bindValue="value" bindLabel="name" formControlName="car"></app-select-box>
+              <app-select-box label="car" [options]="cars" bindValue="value" bindLabel="name" formControlName="carTwo"></app-select-box>
             </form>
             <pre>{{infoForm.value | json}}</pre>
               <br />
@@ -36,7 +37,8 @@ export class ReactiveFormComponent {
       email: ['', [Validators.email, Validators.required]],
       address: ['', [Validators.required, Validators.maxLength(5)]],
       phone: ['', [Validators.required]],
-      car: [null],
+      car: [null,Validators.required],
+      carTwo: [null,Validators.required],
     })
   }
 

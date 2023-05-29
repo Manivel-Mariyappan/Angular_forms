@@ -11,6 +11,7 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
                     <div formArrayName="nameList">
                       <div [formGroupName]="i">
                         <app-textbox label="First Name" formControlName="firstName"></app-textbox>
+                        <app-select-box label="car" [options]="cars" bindValue="value" bindLabel="name" formControlName="car"></app-select-box>
                       </div>
                     </div>
                   </form>
@@ -24,7 +25,15 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 export class DynamicformComponent implements OnInit {
 
   nameForm!: FormGroup;
-  options: any
+  options: any;
+
+  cars = [
+    { value: 1, name: 'Volvo' },
+    { value: 2, name: 'Saab' },
+    { value: 3, name: 'Opel' },
+    { value: 4, name: 'Audi' },
+  ];
+
 
   constructor(private formBuilder: FormBuilder) {
 
@@ -35,17 +44,20 @@ export class DynamicformComponent implements OnInit {
       {
         firstName: '',
         lastName: '',
-        infoText: 'dummy text 1'
+        infoText: 'dummy text 1',
+        car: [1, 2]
       },
       {
         firstName: '',
         lastName: '',
-        infoText: 'dummy text 2'
+        infoText: 'dummy text 2',
+        car: [1, 2]
       },
       {
         firstName: '',
         lastName: '',
-        infoText: 'dummy text 2'
+        infoText: 'dummy text 2',
+        car: [1, 2]
       },
     ];
 
@@ -59,13 +71,14 @@ export class DynamicformComponent implements OnInit {
   generateArryform() {
     const nameList = this.nameForm.get('nameList') as FormArray;
     for (const option of this.options) {
-      nameList.push(this.createControl(option.firstName));
+      nameList.push(this.createControl(option.firstName, option.car));
     };
   }
 
-  createControl(firstName: string) {
+  createControl(firstName: string, car: string) {
     return this.formBuilder.group({
-      firstName: [firstName, [Validators.required, Validators.maxLength(5)]]
+      firstName: [firstName, [Validators.required, Validators.maxLength(5)]],
+      car: [car, [Validators.required]]
     });
   }
 
